@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ขอโทษนะคนดี 🥺</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background-color: #ffeaf4;
+      padding: 50px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      color: #d16ba5;
+      font-size: 36px;
+    }
+
+    p {
+      font-size: 20px;
+      color: #5d4157;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      color: white;
+      background-color: #f48fb1;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: transform 0.3s ease, background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(244, 143, 177, 0.3);
+    }
+
+    button:hover {
+      background-color: #ec407a;
+      transform: scale(1.1);
+    }
+
+    #message {
+      margin-top: 30px;
+      font-size: 22px;
+      color: #8e44ad;
+      font-weight: bold;
+    }
+
+    /* หัวใจลอย */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ffb6c1;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ffb6c1;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        bottom: -20px;
+        opacity: 0;
+        transform: translateX(0) rotate(45deg) scale(1);
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        bottom: 100%;
+        transform: translateX(-50px) rotate(45deg) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>ขอโทษนะคะเด็กดื้อ 🥺<br>M💖F</h1>
+  <p id="text">เค้าขอโทษนะคะ เค้าเองก็ไม่อยากให้เธองอลหรอกคับ เค้าง้อคนไม่เก่งหรอกนะคะอย่าโกธรเลยนะ โอ๋ๆยัยเด็กดื้อ 😢<br>
+  เป็นเด็กดีน้าาโอเคไหมคะหื้มมมมมมม 💖</p>
+
+  <button onclick="saySorry()">ให้อภัยเค้าเถอะน้า 💞</button>
+
+  <div id="message"></div>
+
+  <!-- หัวใจลอยหลายดวง -->
+  <script>
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <!-- ข้อความแบบพิมพ์ทีละตัว -->
+  <script>
+    const text = document.getElementById('text').innerText;
+    let index = 0;
+    document.getElementById('text').innerText = "";
+    function typeWriter() {
+      if (index < text.length) {
+        document.getElementById('text').innerText += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, 40); // ปรับความเร็วได้
+      }
+    }
+    typeWriter();
+
+    function saySorry() {
+      document.getElementById("message").innerHTML = "ขอบคุณที่ให้อภัยเค้านะคะ ยัยตัวเล็กหื้มมมมม 💖";
+    }
+  </script>
+<audio id="bgmusic" loop>
+  <source src="/StephenKing.mp3" type="audio/mpeg">
+  เบราว์เซอร์ของคุณไม่รองรับเสียง
+</audio>
+
+<button onclick="toggleMusic()">🎵 เปิด/ปิด เพลง</button>
+
+<script>
+  const music = document.getElementById("bgmusic");
+  let playing = false;
+
+  function toggleMusic() {
+    if (playing) {
+      music.pause();
+    } else {
+      music.play();
+    }
+    playing = !playing;
+  }
+
+  // auto play on load
+  window.onload = () => {
+    music.play().then(() => {
+      playing = true;
+    }).catch(() => {
+      // บางเบราว์เซอร์อาจบล็อก auto-play ถ้าไม่มีการคลิก
+    });
+  };
+</script>
+</script>
+</body>
+</html>
